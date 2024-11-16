@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  hbbs:
+    container_name: hbbs
+    image: thtom/rustdesk-server:latest
+    command: hbbs -r 0.0.0.0 -k _
+    volumes:
+      - ./data:/root
+    # network_mode: "host"
+    ports:
+      - 21115:21115
+      - 21116:21116 
+      - 21116:21116/udp
+      - 21118:21118
+    depends_on:
+      - hbbr
+    restart: unless-stopped
+
+
+  hbbr:
+    container_name: hbbr
+    image: thtom/rustdesk-server:latest
+    command: hbbr -k _
+    ports:
+      - 21117:21117
+      - 21119:21119
+    volumes:
+      - ./data:/root
+    # network_mode: "host"
+    restart: unless-stopped
+
