@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mind-map:
+    image: shuiche/mind-map:latest
+    ports:
+      - "20241:8080"
+    restart: always
+    container_name: mind-map-container
+    # 根据实际需求，可添加其他配置，如 volumes、environment 等
+    # 例如：
+    # volumes:
+    #   - /your/local/path:/container/path
+    # environment:
+    #   - SOME_ENV_VAR=value
